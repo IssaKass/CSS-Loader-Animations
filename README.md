@@ -1,2 +1,3 @@
 # CSS-Loader-Animations
-https://github.com/IssaKass
+
+<a href = "https://issakass.github.io/CSS-Loader-Animations/">↪ Live Demo</a>
