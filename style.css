@@ -1,0 +1,650 @@
+:root {
+  --clr-primary-light: 0, 100%, 98%;
+  --clr-primary-regular: 0, 100%, 88%;
+  --clr-primary-dark: 0, 100%, 46%;
+  --clr-neutral: 0, 0%, 100%;
+  --clr-text: 0, 0%, 25%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  padding: 30px 0;
+  display: grid;
+  gap: 80px;
+  background-color: hsl(var(--clr-neutral));
+}
+
+.container {
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.main {
+  counter-reset: section-counter 0;
+  display: grid;
+  gap: 60px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header__title {
+  color: hsl(var(--clr-text));
+}
+
+.header__description {
+  margin-top: 15px;
+  color: hsl(var(--clr-text), 0.75);
+}
+
+.section {
+  display: grid;
+  gap: 30px;
+}
+
+.section__title {
+  color: hsl(var(--clr-primary-dark));
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.section__title::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 100vmax;
+  background-color: hsl(var(--clr-primary-regular));
+}
+
+.section__title span {
+  position: relative;
+  background-color: hsl(var(--clr-neutral));
+  padding: 0 12px;
+  border-radius: 100vmax;
+}
+
+.section__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  background-color: hsl(var(--clr-primary-light));
+  border-radius: 4px;
+  border: 3px solid transparent;
+  transition: 250ms ease;
+  position: relative;
+}
+
+.spinner-section .loader {
+  width: 200px;
+  height: 200px;
+}
+
+.progress-section .loader {
+  width: 300px;
+  height: 150px;
+}
+
+.loader:hover {
+  border-color: hsl(var(--clr-primary-dark));
+}
+
+.loader::before {
+  content: counter(section-counter);
+  counter-increment: section-counter;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 14px;
+  color: hsl(var(--clr-primary-regular));
+  transition: 250ms ease;
+}
+
+.loader:hover::before {
+  color: hsl(var(--clr-primary-dark));
+}
+
+.spinner .loading {
+  --_size: var(--size, 40px);
+
+  width: var(--_size);
+  height: var(--_size);
+  border-radius: 50%;
+}
+
+.spinner:nth-child(1) .loading {
+  --size: 40px;
+
+  border: 5px solid hsl(var(--clr-primary-dark));
+
+  border-bottom-color: transparent;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(2) .loading {
+  --size: 40px;
+
+  border: 5px solid hsl(var(--clr-primary-dark), 0.5);
+
+  border-bottom-color: hsl(var(--clr-primary-dark));
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(3) .loading {
+  --size: 40px;
+
+  border: 3px solid;
+
+  border-color: hsl(var(--clr-primary-dark));
+  position: relative;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(3) .loading::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) * 0.75);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 3px solid;
+  border-color: transparent hsl(var(--clr-primary-dark), 0.5)
+    hsl(var(--clr-primary-dark), 0.5) transparent;
+}
+
+.spinner:nth-child(4) .loading {
+  --size: 40px;
+
+  border: 3px solid;
+
+  border-color: hsl(var(--clr-primary-dark));
+  position: relative;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(4) .loading::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) * 1.25);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 3px solid transparent;
+  border-bottom-color: hsl(var(--clr-primary-dark), 0.5);
+}
+
+.spinner:nth-child(5) .loading {
+  --size: 40px;
+
+  border: 3px solid;
+  border-color: hsl(var(--clr-primary-dark));
+
+  position: relative;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(5) .loading::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) * 0.75);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 3px solid;
+  border-color: transparent hsl(var(--clr-primary-dark), 0.5);
+}
+
+.spinner:nth-child(6) .loading {
+  --size: 40px;
+
+  border: 3px solid;
+  border-color: hsl(var(--clr-primary-dark));
+
+  position: relative;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(6) .loading::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) * 1.25);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 3px solid;
+  border-color: transparent hsl(var(--clr-primary-dark), 0.5);
+}
+
+.spinner:nth-child(7) .loading {
+  --size: 40px;
+
+  border: 8px solid;
+  border-color: hsl(var(--clr-primary-dark)) hsl(var(--clr-primary-dark), 0.5)
+    hsl(var(--clr-primary-dark), 0.25) hsl(var(--clr-primary-dark), 0.75);
+
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(8) .loading {
+  --size: 40px;
+
+  border: 2px solid hsl(var(--clr-primary-regular));
+  animation: 1.2s ease-in-out infinite spin-and-wait;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(8) .loading::before {
+  content: "";
+  position: absolute;
+
+  width: calc(var(--size) * 0.25);
+  aspect-ratio: 1 / 1;
+
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  background-color: hsl(var(--clr-primary-dark));
+}
+
+.spinner:nth-child(9) .loading {
+  --size: 40px;
+
+  border: 2px solid hsl(var(--clr-primary-regular));
+
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(9) .loading::before {
+  content: "";
+  position: absolute;
+
+  width: calc(var(--size) * 0.25);
+  aspect-ratio: 1 / 1;
+
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: inherit;
+  border: 2px solid hsl(var(--clr-primary-dark));
+}
+
+.spinner:nth-child(10) .loading {
+  --size: 40px;
+
+  border: 4px dotted hsl(var(--clr-primary-dark));
+
+  animation: 3s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(11) .loading {
+  --size: 40px;
+
+  border: 4px dashed hsl(var(--clr-primary-dark));
+
+  animation: 3s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(12) .loading {
+  --size: 40px;
+
+  border: 2px solid hsl(var(--clr-primary-dark));
+  border-top-color: transparent;
+
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(12) .loading::before {
+  content: "";
+  position: absolute;
+
+  width: calc(var(--size) * 0.6);
+  aspect-ratio: 1 / 1;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 2px solid hsl(var(--clr-primary-dark), 0.5);
+  border-bottom-color: transparent;
+}
+
+.spinner:nth-child(13) .loading {
+  --size: 40px;
+
+  border: 2px solid hsl(var(--clr-primary-dark));
+  border-top-color: transparent;
+
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(13) .loading::before,
+.spinner:nth-child(13) .loading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: 2px solid;
+}
+
+.spinner:nth-child(13) .loading::before {
+  width: calc(var(--size) * 1.5);
+  aspect-ratio: 1 / 1;
+
+  border-color: hsl(var(--clr-primary-dark), 0.5);
+  border-bottom-color: transparent;
+}
+
+.spinner:nth-child(13) .loading::after {
+  width: calc(var(--size) * 0.5);
+  aspect-ratio: 1 / 1;
+
+  border-color: hsl(var(--clr-primary-dark), 0.5);
+  border-left-color: transparent;
+}
+
+.spinner:nth-child(14) .loading {
+  --size: 40px;
+
+  border: 5px solid;
+  border-color: transparent hsl(var(--clr-primary-dark));
+
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+}
+
+.spinner:nth-child(15) .loading {
+  --size: 50px;
+
+  border: 5px solid;
+  border-color: transparent hsl(var(--clr-primary-dark))
+    hsl(var(--clr-primary-dark)) transparent;
+  background-color: hsl(var(--clr-primary-regular));
+  animation: 1.25s ease-in-out infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(15) .loading::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: calc(var(--size) / 3.5) solid;
+  border-color: transparent hsl(var(--clr-primary-dark), 0.5)
+    hsl(var(--clr-primary-dark), 0.5) transparent;
+}
+
+.spinner:nth-child(16) .loading {
+  --size: 50px;
+
+  background-color: hsl(var(--clr-primary-regular));
+
+  animation: 2s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(16) .loading::before {
+  content: "";
+  position: absolute;
+
+  aspect-ratio: 1 / 1;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: calc(var(--size) / 2.5) solid;
+  border-color: transparent hsl(var(--clr-primary-dark), 0.75);
+}
+
+.spinner:nth-child(17) .loading {
+  --size: 50px;
+
+  background-color: hsl(var(--clr-primary-regular), 0.75);
+
+  animation: 2s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(17) .loading::before {
+  content: "";
+  position: absolute;
+
+  aspect-ratio: 1 / 1;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: calc(var(--size) / 2) solid transparent;
+  border-bottom-color: hsl(var(--clr-primary-dark), 0.75);
+}
+
+.spinner:nth-child(18) .loading {
+  --size: 50px;
+
+  border: 3px solid;
+  border-color: hsl(var(--clr-primary-dark)) transparent;
+  animation: 1.5s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(18) .loading::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  border: calc(var(--size) / 2) solid;
+  border-color: hsl(var(--clr-primary-regular), 0.5) transparent;
+}
+
+.spinner:nth-child(19) .loading {
+  --size: 50px;
+
+  border: 10px solid;
+  border-color: hsl(var(--clr-primary-dark)) hsl(var(--clr-primary-dark))
+    hsl(var(--clr-primary-regular)) hsl(var(--clr-primary-regular));
+  animation: 2s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(20) .loading {
+  --size: 50px;
+
+  border: 5px solid;
+  border-color: hsl(var(--clr-primary-dark)) transparent;
+  animation: 2s linear infinite spin;
+  animation-play-state: paused;
+  position: relative;
+}
+
+.spinner:nth-child(20) .loading::before {
+  content: "";
+  position: absolute;
+
+  width: calc(var(--size) / 4);
+  aspect-ratio: 1/ 1;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  background-color: hsl(var(--clr-primary-dark));
+}
+
+.spinner:hover .loading {
+  animation-play-state: running;
+}
+
+.progress .progress-track {
+  --_width: var(--width, 180px);
+  --_height: var(--height, 12px);
+
+  width: var(--_width);
+  height: var(--_height);
+  background-color: hsl(var(--clr-primary-regular));
+  overflow: hidden;
+}
+
+.progress .progress-thumb {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.progress:nth-child(1) .progress-track {
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(1) .progress-track .progress-thumb {
+  background-color: hsl(var(--clr-primary-dark));
+  animation: 3s -1s ease infinite progress;
+  animation-play-state: paused;
+}
+
+.progress:nth-child(2) .progress-track {
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(2) .progress-track .progress-thumb {
+  background-color: hsl(var(--clr-primary-dark));
+  animation: 3s -1s ease infinite progress;
+  animation-play-state: paused;
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(3) .progress-track {
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(3) .progress-track .progress-thumb {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    hsl(var(--clr-primary-dark)) 0 5px,
+    hsl(var(--clr-primary-dark), 0.5) 5px 10px
+  );
+  animation: 3s -1s ease infinite progress;
+  animation-play-state: paused;
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(4) .progress-track {
+  border-radius: 100vmax;
+}
+
+.progress:nth-child(4) .progress-track .progress-thumb {
+  background: hsl(var(--clr-primary-dark));
+  animation: 3s -1s steps(10) infinite progress;
+  animation-play-state: paused;
+}
+
+.progress:nth-child(5) .progress-track {
+  border-radius: 100vmax;
+  border: 2px solid hsl(var(--clr-primary-dark), 0.25);
+  padding: 2px;
+}
+
+.progress:nth-child(5) .progress-track .progress-thumb {
+  background: hsl(var(--clr-primary-dark));
+  animation: 3s -1s ease infinite progress;
+  animation-play-state: paused;
+  border-radius: 100vmax;
+}
+
+.progress:hover .progress-track .progress-thumb {
+  animation-play-state: running;
+}
+
+.footer {
+  color: hsl(var(--clr-text));
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  gap: 16px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes spin-and-wait {
+  0%,
+  20% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
